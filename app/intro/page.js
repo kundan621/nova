@@ -11,7 +11,7 @@ function App() {
         <section className="mb-4">
           <h2 className="text-3xl font-semibold">Who we are</h2>
           <p className="text-lg">We are a team of passionate software engineers who love to solve problems and create innovative solutions. We have expertise in various domains such as web development, mobile development, cloud computing, artificial intelligence, and more.</p>
-        </section>
+        </section> 
         <section className="mb-4">
           <h2 className="text-3xl font-semibold">What we do</h2>
           <p className="text-lg">We provide consulting and service for clients who need help with their software projects. We can assist with any stage of the software development lifecycle, from planning and design, to implementation and testing, to deployment and maintenance. We can also provide training and support for your team.</p>

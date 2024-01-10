@@ -8,7 +8,7 @@ const Home = () => {
       </h1>
 
       <p className="desc text-center">
-        HK Software is a product maker company. We make products which brings fortune and helps people solve their problems.
+        HK Software is a one stop solution for building scalable products. We make products which brings fortune and helps people solve their problems.
       </p>
 
     </section>

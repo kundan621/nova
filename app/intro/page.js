@@ -1,15 +1,8 @@
 import React from 'react';
-import Header from '../components/header';
-import Footer from '../components/footer'
 import image from '../../public/logo.png'
 function App() {
   return (
     <div className="App">
-      <Header
-        companyName="HK Software"
-        tagline="A consulting and service provider company"
-        logoUrl={image}
-      />
       <main className="p-4">
         <section className="mb-4">
           <h2 className="text-3xl font-semibold">Who we are</h2>
@@ -34,7 +27,6 @@ function App() {
           </ul>
         </section>
       </main>
-      <Footer></Footer>
     </div>
   );
 }

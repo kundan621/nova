@@ -1,12 +1,15 @@
 import React from 'react';
-
+import Header from '../components/header';
+import Footer from '../components/footer'
+import image from '../../public/logo.png'
 function App() {
   return (
     <div className="App">
-      <header className="bg-blue-600 text-white p-4">
-        <h1 className="text-4xl font-bold">HK Software</h1>
-        <p className="text-xl">A consulting and service provider company</p>
-      </header>
+      <Header
+        companyName="HK Software"
+        tagline="A consulting and service provider company"
+        logoUrl={image}
+      />
       <main className="p-4">
         <section className="mb-4">
           <h2 className="text-3xl font-semibold">Who we are</h2>
@@ -31,9 +34,7 @@ function App() {
           </ul>
         </section>
       </main>
-      <footer className="bg-gray-200 text-gray-700 p-4">
-        <p className="text-center">© 2024 HK Software. All rights reserved.</p>
-      </footer>
+      <Footer></Footer>
     </div>
   );
 }

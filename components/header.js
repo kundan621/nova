@@ -4,7 +4,7 @@ import React from 'react';
 
 const Header = ({ companyName, tagline, logoUrl }) => {
   return (
-    <header className="bg-black text-white p-4 flex items-center justify-between">
+    <header className="w-full bg-black text-white p-4 flex items-center justify-between">
       <div className="flex items-center">
         <img src={`./logo.png`} alt={`${companyName} Logo`} className="mr-2 h-8" />
         <div className="flex flex-col">

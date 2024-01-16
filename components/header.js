@@ -1,5 +1,3 @@
-// components/Header.js
-
 import React from 'react';
 
 const Header = ({ companyName, tagline, logoUrl }) => {
@@ -14,9 +12,9 @@ const Header = ({ companyName, tagline, logoUrl }) => {
       </div>
       <nav className="space-x-4">
         {/* Add navigation links or buttons here */}
-        <a href="#" className="text-sm">Home</a>
-        <a href="#" className="text-sm">Services</a>
-        <a href="#" className="text-sm">Contact</a>
+        <a href="/" className="text-sm">Home</a>
+        <a href="/intro" className="text-sm">Intro</a>
+        <a href="/contact" className="text-sm">Contact</a>
       </nav>
     </header>
   );

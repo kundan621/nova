@@ -2,9 +2,11 @@
 import nodemailer from 'nodemailer';
 import { NextRequest, NextResponse } from 'next/app';
 
-export default async function handler(request) {
+export default async function POST(request) {
   // check the request method
+  console.log('Post Invoked');
   if (request.method === 'POST') {
+    
     // get the form inputs from the request body
     const { name, email, message } = await request.json();
     // validate the inputs

@@ -1,8 +1,9 @@
 'use client';
 import { useState } from 'react';
+import { NextResponse } from "next/server";
 import axios from 'axios';
 
-export default function ContactPage() {
+ function ContactPage() {
   // state variables for the form inputs
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -13,22 +14,51 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // send a post request to the api endpoint
+    const names = JSON.stringify({
+      name,
+      email,
+      message, 
+    });
+    // console.log(names);
     try {
-      const response = await axios.post('/api/contact', {
-        name,
-        email,
-        message,
-      });
-      // set the status message based on the response
-      setStatus(response.data.message);
-      // clear the form inputs
+      const res = await fetch('/api/intro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: names
+      })
+      const data = await res.json();
+      console.log(data);
+
       setName('');
       setEmail('');
       setMessage('');
-    } catch (error) {
-      // handle any errors
+    } catch (err) {
       setStatus(error.response.data.message);
     }
+ 
+ // 
+ 
+ // return NextResponse.json(data)
+
+    // try {
+    //   const response = await fetch('/api/intro', {
+    //     name,
+    //     email,
+    //     message, 
+    //   });
+    //   //console.log(response);
+    //   // set the status message based on the response
+    //   // setStatus(response.data.message);
+    //   // clear the form inputs
+    //   setName('');
+    //   setEmail('');
+    //   setMessage('');
+    // } catch (error) {
+    //   // handle any errors
+    //   setStatus(error.response.data.message);
+    // }
   };
 
   return (
@@ -164,3 +194,4 @@ export default function ContactPage() {
     </div>
   );
 }
+export default ContactPage;

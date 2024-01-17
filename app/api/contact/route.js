@@ -1,54 +1,61 @@
-// app/api/contacts/route.ts
+//http://localhost:3000/api/contact
+import { NextResponse } from "next/server";
 import nodemailer from 'nodemailer';
-import { NextRequest, NextResponse } from 'next/app';
 
-export default async function POST(request) {
-  // check the request method
-  console.log('Post Invoked');
-  if (request.method === 'POST') {
-    
-    // get the form inputs from the request body
-    const { name, email, message } = await request.json();
-    // validate the inputs
-    if (!name || !email || !message) {
-      // return an error if any input is missing
-      return new NextResponse(
-        JSON.stringify({ message: 'Please fill all the fields.' }),
-        { status: 400 }
-      );
-    }
-    // create a transporter object using nodemailer
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'kundan@gmail.com',
-          pass: 'Csebddy3',
-        },
-    });
-    // create an email options object
-    const mailOptions = {
-      from: `${name} <${email}>`,
-      to: process.env.EMAIL_TO,
-      subject: 'New message from contact form',
-      text: message,
-    };
-    // send the email using the transporter and the mail options
-    try {
-      await transporter.sendMail(mailOptions);
-      // return a success message if the email was sent
-      return new NextResponse(
-        JSON.stringify({ message: 'Your message has been sent.' }),
-        { status: 200 }
-      );
-    } catch (error) {
-      // handle any errors
-      return new NextResponse(
-        JSON.stringify({ message: error.message }),
-        { status: 500 }
-      );
-    }
-  } else {
-    // return a method not allowed error if the request method is not POST
-    return new NextResponse('Method not allowed', { status: 405 });
-  }
+export async function GET(request){
+  const users=[
+      {id:1, name: 'John'},
+      {id:2, name: 'jane'},
+      {id:3, name: 'bob'}
+  ];
+
+  return new Response(JSON.stringify(users))
 }
+
+export async function POST(req, res) {
+  console.log('Post method invoked');
+  let name;
+  let email;
+  let message;
+  // const { name, email, message } = await req.json();
+  try {
+      console.log('Post method invoked');
+      
+      const data = await req.json();  // Parse the JSON body
+      console.log('Received datas:', data);
+      name = data.name;
+      email = data.email;
+      message = data.message;
+    } catch (error) {
+      console.error('Error processing request:', error);
+      }
+      console.log('Calling nodeMailer');
+      const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: 'hksoftwares81@gmail.com',
+            pass: 'hohb nmce semg fyzm'
+          },
+      });
+      const mailOptions = {
+          from: `${name} <${email}>`,
+          to: 'hksoftwares81@gmail.com',
+          subject: 'New message from contact form',
+          text: message,
+        };
+        try {
+          await transporter.sendMail(mailOptions);
+          // return a success message if the email was sent
+          return new NextResponse(
+            JSON.stringify({ message: 'Your message has been sent.' }),
+            { status: 200 }
+          );
+        } catch (error) {
+          // handle any errors
+          return new NextResponse(
+            JSON.stringify({ message: error.message }),
+            { status: 500 }
+          );
+        }
+
+  }

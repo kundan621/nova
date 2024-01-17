@@ -19,9 +19,9 @@ import axios from 'axios';
       email,
       message, 
     });
-    // console.log(names);
+
     try {
-      const res = await fetch('/api/intro', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -37,28 +37,7 @@ import axios from 'axios';
     } catch (err) {
       setStatus(error.response.data.message);
     }
- 
- // 
- 
- // return NextResponse.json(data)
 
-    // try {
-    //   const response = await fetch('/api/intro', {
-    //     name,
-    //     email,
-    //     message, 
-    //   });
-    //   //console.log(response);
-    //   // set the status message based on the response
-    //   // setStatus(response.data.message);
-    //   // clear the form inputs
-    //   setName('');
-    //   setEmail('');
-    //   setMessage('');
-    // } catch (error) {
-    //   // handle any errors
-    //   setStatus(error.response.data.message);
-    // }
   };
 
   return (

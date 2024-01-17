@@ -40,10 +40,11 @@ export async function POST(req, res) {
       const mailOptions = {
           from: `${name} <${email}>`,
           to: 'hksoftwares81@gmail.com',
-          subject: 'New message from contact form',
+          subject: `New message from ${email}`,
           text: message,
         };
         try {
+     
           await transporter.sendMail(mailOptions);
           // return a success message if the email was sent
           return new NextResponse(
